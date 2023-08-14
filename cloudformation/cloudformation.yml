@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Meu primeiro template"
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Escolha o hardware da sua instancia.
+
+
+
+Resources:
+
+  MeuPrimeiroBucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      BucketName: "cloudformation-fundamentals2023-01"
+
+  MinhaPrimeiraInstacia:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: "ami-0261755bbcb8c4a84"
+      InstanceType: !Ref InstanceType
+
+
